@@ -12,14 +12,13 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.ktx.FirebaseStorageKtxRegistrar
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_register.*
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_register)
 
 
         register_button_register.setOnClickListener {
@@ -55,8 +54,12 @@ class RegisterActivity : AppCompatActivity() {
             selectedPhotoUri = data.data
             val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, selectedPhotoUri)
 
-            val bitmapDrawable = BitmapDrawable(bitmap)
-            selectphoto_button_register.setBackgroundDrawable(bitmapDrawable)
+            selectphoto_imageview_register.setImageBitmap(bitmap)
+
+            selectphoto_button_register.alpha = 0f
+
+//            val bitmapDrawable = BitmapDrawable(bitmap)
+//            selectphoto_button_register.setBackgroundDrawable(bitmapDrawable)
         }
     }
 
